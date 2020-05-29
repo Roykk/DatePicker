@@ -19,17 +19,6 @@ public class DatePicker {
     public static var leftTransitionAnimation: UIView.AnimationOptions = .transitionFlipFromLeft
     public static var rightTransitionAnimation: UIView.AnimationOptions = .transitionFlipFromRight
 
-    // Bundle
-    static var bundle: Bundle {
-        let podBundle = Bundle(for: PickerViewController.self)
-
-        if let bundleURL = podBundle.url(forResource: "DatePicker", withExtension: "bundle"), let b = Bundle(url: bundleURL) {
-            return b
-        } else {
-            print("Fatal Error: Could not find bundle for FreshDate Frameworks")
-            fatalError()
-        }
-    }
 
     // Picker view controller
     public lazy var vc: PickerViewController = {
