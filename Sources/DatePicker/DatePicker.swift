@@ -16,7 +16,7 @@ enum DatePickerMode {
 extension Bundle {
     static func myResourceBundle() throws -> Bundle {
         let bundles = Bundle.allBundles
-        let bundlePaths = bundles.compactMap { $0.resourceURL?.appendingPathComponent("Resources", isDirectory: false).appendingPathExtension("bundle") }
+        let bundlePaths = bundles.compactMap { $0.resourceURL?.appendingPathComponent("resourcesb", isDirectory: false).appendingPathExtension("bundle") }
 
         guard let bundle = bundlePaths.compactMap({ Bundle(url: $0) }).first else {
             throw NSError(domain: "com.myframework", code: 404, userInfo: [NSLocalizedDescriptionKey: "Missing resource bundle"])
