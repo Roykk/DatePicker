@@ -564,7 +564,7 @@ extension PickerViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func registerCell(name: String) {
-        collectionView.register(UINib(nibName: name, bundle: nil), forCellWithReuseIdentifier: name)
+        collectionView.register(UINib(nibName: name, bundle: try! Bundle.myResourceBundle()), forCellWithReuseIdentifier: name)
     }
 
     func getDaysCell(indexPath: IndexPath) -> DaysCollectionViewCell {

@@ -13,16 +13,26 @@ enum DatePickerMode {
     case MinMax
     case Yearless
 }
+extension Bundle {
+    static func myResourceBundle() throws -> Bundle {
+        let bundles = Bundle.allBundles
+        let bundlePaths = bundles.compactMap { $0.resourceURL?.appendingPathComponent("Resources", isDirectory: false).appendingPathExtension("bundle") }
+
+        guard let bundle = bundlePaths.compactMap({ Bundle(url: $0) }).first else {
+            throw NSError(domain: "com.myframework", code: 404, userInfo: [NSLocalizedDescriptionKey: "Missing resource bundle"])
+        }
+        return bundle
+    }
+}
 
 public class DatePicker {
 
     public static var leftTransitionAnimation: UIView.AnimationOptions = .transitionFlipFromLeft
     public static var rightTransitionAnimation: UIView.AnimationOptions = .transitionFlipFromRight
 
-
     // Picker view controller
     public lazy var vc: PickerViewController = {
-        return UIStoryboard(name: "Picker", bundle: nil).instantiateViewController(withIdentifier: "Picker") as! PickerViewController
+        return UIStoryboard(name: "Picker", bundle: try! Bundle.myResourceBundle()).instantiateViewController(withIdentifier: "Picker") as! PickerViewController
     }()
 
     // MARK: Optionals
