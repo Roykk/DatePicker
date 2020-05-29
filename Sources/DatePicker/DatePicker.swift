@@ -22,7 +22,7 @@ public class DatePicker {
 
     // Picker view controller
     public lazy var vc: PickerViewController = {
-        return UIStoryboard(name: "Picker", bundle: DatePicker.bundle).instantiateViewController(withIdentifier: "Picker") as! PickerViewController
+        return UIStoryboard(name: "Picker", bundle: nil).instantiateViewController(withIdentifier: "Picker") as! PickerViewController
     }()
 
     // MARK: Optionals
